@@ -6,7 +6,7 @@ Personal Budget Tracker
 This application allows users to track income and expenses,
 view spending by category, calculate their balance,
 and save/load financial data using a CSV file.
-"""
+""" 
 
 import csv
 import os
