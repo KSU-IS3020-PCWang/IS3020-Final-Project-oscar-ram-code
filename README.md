@@ -12,7 +12,7 @@
 Python Version
 Python 3.10 or newer is recommended.
 
-Required Files
+### Required Files
 
 The project should contain the following files:
 
@@ -51,7 +51,6 @@ The application demonstrates several Python concepts learned throughout IS 3020.
 - **File Persistence:** The application uses the Python csv module to save transaction information to a CSV file and reload it whenever the application starts.
 - **Exception Handling:** try and except blocks prevent the program from crashing when users enter invalid numeric values or when file-related errors occur.
 
-## Data Files
 
 ## Data Files
 
@@ -73,8 +72,6 @@ The application automatically loads this file when it starts and updates it when
 
 ## Testing Summary
 
-## Testing Summary
-
 The following scenarios were tested during development:
 
 - Added multiple income transactions.
@@ -87,7 +84,6 @@ The following scenarios were tested during development:
 - Entered negative or zero dollar amounts to verify input validation.
 - Started the program when no `transactions.csv` file existed to verify that a new CSV file was created automatically.
 
-## AI Use
 
 ## AI Use
 
