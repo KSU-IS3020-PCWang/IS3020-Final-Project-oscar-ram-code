@@ -88,7 +88,10 @@ def add_income():
     transactions.append(transaction)
     save_data()
 
-    print("Income added successfully.\n")
+   print("\n=========================================")
+print(f"Income of ${amount:.2f} added successfully!")
+print("Transaction has been saved.")
+print("=========================================\n")
 
 
 def add_expense():
@@ -126,7 +129,10 @@ def add_expense():
     transactions.append(transaction)
     save_data()
 
-    print("Expense added successfully.\n")
+    print("\n=========================================")
+print(f"Expense of ${amount:.2f} added successfully!")
+print("Transaction has been saved.")
+print("=========================================\n")
 
 
 def view_transactions():
@@ -134,22 +140,25 @@ def view_transactions():
     Displays every transaction.
     """
 
-    print("\n========== ALL TRANSACTIONS ==========")
+    print("\n=========================================")
+    print("           ALL TRANSACTIONS")
+    print("=========================================")
 
     if len(transactions) == 0:
-        print("No transactions found.\n")
+        print("No transactions have been recorded yet.\n")
         return
 
-    for transaction in transactions:
+    for i, transaction in enumerate(transactions, start=1):
 
-        print(f"""
-Date: {transaction['date']}
-Type: {transaction['type']}
-Category: {transaction['category']}
-Description: {transaction['description']}
-Amount: ${transaction['amount']:.2f}
--------------------------------
-""")
+        print(f"Transaction #{i}")
+        print(f"Date: {transaction['date']}")
+        print(f"Type: {transaction['type']}")
+        print(f"Category: {transaction['category']}")
+        print(f"Description: {transaction['description']}")
+        print(f"Amount: ${transaction['amount']:.2f}")
+        print("-----------------------------------------")
+
+    print(f"\nTotal Transactions: {len(transactions)}\n")
 
 
 def spending_by_category():
@@ -157,7 +166,9 @@ def spending_by_category():
     Displays total spending grouped by category.
     """
 
-    print("\n====== Spending By Category ======")
+    print("\n=========================================")
+    print("        SPENDING BY CATEGORY")
+    print("=========================================")
 
     totals = {}
 
@@ -173,11 +184,11 @@ def spending_by_category():
             totals[category] += transaction["amount"]
 
     if len(totals) == 0:
-        print("No expenses recorded.\n")
+        print("No expenses have been recorded.\n")
         return
 
-    for category, total in totals.items():
-        print(f"{category}: ${total:.2f}")
+    for category in sorted(totals):
+        print(f"{category:<20} ${totals[category]:>8.2f}")
 
     print()
 
@@ -196,26 +207,29 @@ def calculate_balance():
 
         if transaction["type"] == "Income":
             income += transaction["amount"]
-
         else:
             expenses += transaction["amount"]
 
     balance = income - expenses
 
-    print("\n========== CURRENT BALANCE ==========")
-    print(f"Total Income : ${income:.2f}")
-    print(f"Total Expenses : ${expenses:.2f}")
-    print(f"Current Balance : ${balance:.2f}\n")
-
+    print("\n=========================================")
+    print("          CURRENT BALANCE")
+    print("=========================================")
+    print(f"Total Income:        ${income:.2f}")
+    print(f"Total Expenses:      ${expenses:.2f}")
+    print("-----------------------------------------")
+    print(f"Current Balance:     ${balance:.2f}")
+    print(f"Transactions Saved:  {len(transactions)}")
+    print("=========================================\n")
 
 def menu():
     """
     Displays the main menu.
     """
 
-    print("====================================")
-    print("     PERSONAL BUDGET TRACKER")
-    print("====================================")
+    print("\n=========================================")
+    print("      PERSONAL BUDGET TRACKER")
+    print("=========================================")
     print("1. Add Income")
     print("2. Add Expense")
     print("3. View All Transactions")
@@ -223,7 +237,7 @@ def menu():
     print("5. Calculate Current Balance")
     print("6. Save Data")
     print("7. Exit")
-    print("====================================")
+    print("=========================================")
 
 
 def main():
@@ -256,15 +270,17 @@ def main():
 
         elif choice == "6":
             save_data()
-            print("Data saved successfully.\n")
+            print("\nData saved successfully!\n")
 
         elif choice == "7":
 
             save_data()
 
-            print("\nThank you for using Personal Budget Tracker!")
-            print("Your data has been saved.")
-
+            print("\n=========================================")
+print("Thank you for using Personal Budget Tracker!")
+print("All transactions have been saved successfully.")
+print("Goodbye!")
+print("=========================================")
             break
 
         else:
